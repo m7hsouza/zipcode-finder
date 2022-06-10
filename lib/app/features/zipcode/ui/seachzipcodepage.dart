@@ -26,7 +26,6 @@ class _SearchZipCodePageState extends State<SearchZipCodePage> {
           elevation: 7,
           margin: const EdgeInsets.all(0),
           shape: const RoundedRectangleBorder(),
-          color: Colors.red,
           child: Container(
             alignment: Alignment.bottomCenter,
             padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -35,13 +34,12 @@ class _SearchZipCodePageState extends State<SearchZipCodePage> {
               decoration: InputDecoration(
                 hintText: '69000000',
                 labelText: 'CEP',
-                labelStyle: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                labelStyle: const TextStyle(fontWeight: FontWeight.bold),
                 hintStyle: TextStyle(color: Colors.black.withOpacity(.4), fontStyle: FontStyle.italic),
                 border: InputBorder.none,
                 suffixIcon: IconButton(
                   icon: const Icon(
                     Icons.search,
-                    color: Colors.white,
                   ),
                   onPressed: () {
                     _bloc.add(_inputController.text);
@@ -64,7 +62,17 @@ class _SearchZipCodePageState extends State<SearchZipCodePage> {
           }
 
           if (state is SearchZipCodeError) {
-            return const Center(child: Text('Erro ao buscar o cep!'));
+            return Center(
+              child: Text(
+                'Erro ao buscar o cep!',
+                style: TextStyle(
+                  fontSize: 21,
+                  fontWeight: FontWeight.w700,
+                  decoration: TextDecoration.underline,
+                  color: Theme.of(context).colorScheme.error,
+                ),
+              ),
+            );
           }
 
           return Container();

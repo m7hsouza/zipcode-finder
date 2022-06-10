@@ -25,9 +25,18 @@ class AppWidget extends StatelessWidget {
       ],
       child: BlocProvider(
         create: (ctx) => SearchZipCodeBloc(ctx.read()),
-        child: const MaterialApp(
+        child: MaterialApp(
           debugShowCheckedModeBanner: false,
-          home: SearchZipCodePage(),
+          theme: ThemeData(
+            useMaterial3: true,
+            // colorSchemeSeed: Colors.green,
+            colorScheme: ColorScheme.fromSeed(
+              seedColor: Colors.green,
+              brightness: Brightness.dark,
+            ),
+            brightness: Brightness.dark,
+          ),
+          home: const SearchZipCodePage(),
         ),
       ),
     );
